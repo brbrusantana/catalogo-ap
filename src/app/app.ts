@@ -34,7 +34,7 @@ type Produto = {
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Catálogo de Venda - Bruno Santana');
+  protected readonly title = signal('Catálogo de Venda: Desapego do Bruno');
 
   statusSelecionado = 'Todos';
   comodoSelecionado = 'Todos';
