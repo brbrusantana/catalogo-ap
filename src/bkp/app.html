@@ -1,25 +1,57 @@
+<!--
+============================================================
+Projeto: Elo - AP do Bruno - Desapego
+Autor: Bruno Santana
+Data: 30/05/2026
+
+Objetivo:
+Este arquivo define a estrutura visual do catálogo.
+
+Conceitos estudados:
+- HTML semântico
+- Template Angular
+- Data Binding
+- Two-way binding com [(ngModel)]
+- @for para repetir produtos
+- @if para exibir botões conforme status
+============================================================
+-->
+
+<!-- Alerta anti-golpe exibido antes de qualquer produto. -->
 <section class="alerta-seguranca">
   <strong>Atenção, não caia em golpes!!!</strong>
   <p>
-    Este catálogo é apenas para consulta dos itens. Não efetue nenhum pagamento
-    sem antes ver o produto e confirmar diretamente no WhatsApp dos responsáveis
-    pelo desapego: Bruno Santana ou Ana Paula Santana. Não compre por links
-    enviados por terceiros.
+    Este catálogo é apenas para consulta dos itens. Não efetue pagamento
+    sem ver o produto ou confirmar diretamente no WhatsApp dos responsáveis
+    pelo desapego: Bruno Santana ou Ana Paula Santana. Não compre através de terceiros.
   </p>
 </section>
 
+<!-- Cabeçalho principal do catálogo. O título vem do app.ts. -->
 <header class="topo">
   <h1>{{ title() }}</h1>
-  <p>Itens disponíveis para venda. Consulte o status de cada produto.</p>
+  <p>Consulte abaixo, o status de cada produto.</p>
 </header>
 
+<!--
+Resumo do catálogo.
+Mostra quantos itens continuam disponíveis e quantos itens estão sendo exibidos após filtros.
+-->
 <section class="resumo">
-  {{ totalDisponiveis }} dos {{ totalItens }} itens continuam disponíveis! Corra e não perca essa chance!!
+  <p>
+    {{ totalDisponiveis }} dos {{ totalItens }} itens continuam disponíveis! Corra e não perca essa chance!!
+  </p>
+
   <p class="resultado-filtro">
-  Exibindo {{ produtosFiltrados.length }} itens do catálogo, de acordo com os filtros aplicados. 
+    Exibindo {{ produtosFiltrados.length }} itens do catálogo, aplicando os filtros.
   </p>
 </section>
 
+<!--
+Filtros do catálogo.
+[(ngModel)] liga cada campo HTML a uma variável do app.ts.
+Quando o usuário muda o filtro, a lista é recalculada automaticamente.
+-->
 <section class="filtros">
   <label>
     Pesquisar
@@ -58,14 +90,20 @@
   </label>
 </section>
 
+<!--
+Grid de produtos.
+No desktop continua com vários cards por linha.
+No celular, o app.scss ajusta para 2 cards por linha.
+-->
 <section class="grid">
   @for (produto of produtosFiltrados; track produto.id) {
     <article class="produto" [class.produto-vendido]="produto.status === 'Vendido'">
-       <div class="imagem-area">
+      <div class="imagem-area">
         <img [src]="produto.imagem" [alt]="produto.nome">
       </div>
 
       <div class="conteudo">
+        <!-- Selo visual do status do produto. -->
         <div class="linha-status">
           <span
             class="status"
@@ -73,39 +111,57 @@
             [class.vendido]="produto.status === 'Vendido'"
             [class.reservado]="produto.status === 'Reservado'"
             [class.indisponivel]="produto.status === 'Indisponível'"
-            >
+          >
             {{ produto.status }}
           </span>
         </div>
 
         <h2>{{ produto.nome }}</h2>
 
+        <!-- Mantive o preço antigo no mobile porque ajuda a mostrar o desconto. -->
         <p class="preco-antigo">De: {{ produto.valorOriginal }}</p>
         <p class="preco">Por: {{ produto.valorVenda }}</p>
 
+        <!--
+        Botões do card.
+        - Indisponível: botão desabilitado
+        - Vendido: botão desabilitado, mas pode manter Mercado Livre se existir
+        - Disponível: abre a arte do anúncio
+        -->
         <div class="acoes">
-        @if (produto.status === 'Indisponível') {
-          <button class="botao botao-bloqueado" disabled>
-            Indisponível para negociação
-          </button>
-        } @else if (produto.status === 'Vendido') {
-          <button class="botao botao-bloqueado" disabled>
-            Produto vendido
-          </button>
-        } @else {
-          <a class="botao botao-detalhes" [href]="produto.imagem" target="_blank">
-            Ver anúncio completo
-          </a>
-        }
+          @if (produto.status === 'Indisponível') {
+            <button class="botao botao-bloqueado" disabled>
+              Indisponível para negociação
+            </button>
+          } @else if (produto.status === 'Vendido') {
+            <button class="botao botao-bloqueado" disabled>
+              Produto vendido
+            </button>
+          } @else {
+            <a
+              class="botao botao-detalhes"
+              [href]="produto.imagem"
+              target="_blank"
+              (click)="rastrearClique('Detalhes', produto)"
+            >
+              <span class="texto-desktop">Ver anúncio completo</span>
+              <span class="texto-mobile">Detalhes</span>
+            </a>
+          }
 
-        @if (produto.linkMercadoLivre && produto.status !== 'Indisponível') {
-          <a class="botao botao-ml" [href]="produto.linkMercadoLivre" target="_blank">
-            Ver no Mercado Livre
-          </a>
-        }
-      </div>
+          @if (produto.linkMercadoLivre && produto.status !== 'Indisponível') {
+            <a
+              class="botao botao-ml"
+              [href]="produto.linkMercadoLivre"
+              target="_blank"
+              (click)="rastrearClique('Mercado Livre', produto)"
+            >
+              <span class="texto-desktop">Ver no Mercado Livre</span>
+              <span class="texto-mobile">Mercado Livre</span>
+            </a>
+          }
+        </div>
       </div>
     </article>
-
   }
 </section>

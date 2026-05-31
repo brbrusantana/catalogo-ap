@@ -1,13 +1,52 @@
-//import { Component, signal } from '@angular/core';
+/**
+ * ============================================================
+ * Projeto: Elo - AP do Bruno - Desapego
+ * Autor: Bruno Santana
+ * Data: 30/05/2026
+ *
+ * Objetivo:
+ * Este arquivo controla os dados e as regras do catálogo.
+ * Aqui ficam:
+ * - lista de produtos
+ * - status dos itens
+ * - filtros
+ * - pesquisa
+ * - ordenação
+ * - proteção simples contra botão direito e atalhos de inspeção
+ *
+ * Conceitos estudados:
+ * - Angular Component
+ * - TypeScript
+ * - Tipos personalizados
+ * - Arrays
+ * - Filter()
+ * - Sort()
+ * - Getters
+ * - Event listeners com @HostListener
+ * ============================================================
+ */
+
+// Importa o FormsModule para permitir o uso de [(ngModel)] nos filtros do HTML.
 import { FormsModule } from '@angular/forms';
+// Importa recursos principais do Angular usados neste componente.
 import { Component, HostListener, signal } from '@angular/core';
 
+/**
+ * Bruno:
+ * Tipo com os status permitidos para um produto.
+ * Isso evita digitar status diferentes por engano.
+ */
 type StatusProduto =
   | 'Disponível'
   | 'Reservado'
   | 'Vendido'
   | 'Indisponível';
 
+/**
+ * Bruno:
+ * Tipo com os cômodos usados nos filtros do catálogo.
+ * Suíte e Dormitório 2 entram como categoria geral Dormitório.
+ */
 type CategoriaComodo =
   | 'Dormitório'
   | 'Sala'
@@ -15,6 +54,11 @@ type CategoriaComodo =
   | 'Lavanderia'
   | 'Escritório';
 
+/**
+ * Bruno:
+ * Modelo de dados de cada produto.
+ * Cada item da lista precisa seguir esta estrutura.
+ */
 type Produto = {
   id: number;
   nome: string;
@@ -27,6 +71,12 @@ type Produto = {
   linkMercadoLivre?: string;
 };
 
+/**
+ * Componente principal da aplicação Angular.
+ * selector: nome da tag usada no index.html, <app-root>.
+ * templateUrl: aponta para o app.html.
+ * styleUrl: aponta para o app.scss.
+ */
 @Component({
   selector: 'app-root',
   imports: [FormsModule],
@@ -34,18 +84,40 @@ type Produto = {
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Catálogo de Venda: Desapego do Bruno');
+  /**
+   * Título exibido no cabeçalho azul do catálogo.
+   * Signal é um recurso do Angular para guardar um valor reativo.
+   */
+  protected readonly title = signal('[Desapego] Catálogo de Venda');
 
+  /**
+   * Valores iniciais dos filtros.
+   * Ao abrir a página, todos os produtos aparecem.
+   */
   statusSelecionado = 'Todos';
   comodoSelecionado = 'Todos';
 
+  /**
+   * Opções exibidas nos combos de filtro do HTML.
+   */
   statusOptions = ['Todos', 'Disponível', 'Reservado', 'Vendido', 'Indisponível'];
   comodoOptions = ['Todos', 'Dormitório', 'Sala', 'Cozinha', 'Lavanderia', 'Escritório'];
 
+  /**
+   * Texto digitado no campo de pesquisa.
+   */
   pesquisa = '';
-ordenacaoSelecionada = 'Relevância';
 
-ordenacaoOptions = [
+  /**
+   * Ordenação inicial.
+   * Relevância significa: mostrar primeiro o que ainda está disponível para venda.
+   */
+  ordenacaoSelecionada = 'Relevância';
+
+  /**
+   * Opções do campo Ordenar.
+   */
+  ordenacaoOptions = [
   'Relevância',
   'Menor preço',
   'Maior preço',
@@ -53,14 +125,27 @@ ordenacaoOptions = [
   'Nome Z-A'
 ];
 
-get totalItens(): number {
+  /**
+   * Total geral de itens cadastrados no catálogo.
+   */
+  get totalItens(): number {
   return this.produtos.length;
 }
 
-get totalDisponiveis(): number {
+  /**
+   * Total de itens disponíveis para venda.
+   * Este número aparece no resumo verde do catálogo.
+   */
+  get totalDisponiveis(): number {
   return this.produtos.filter((produto) => produto.status === 'Disponível').length;
 }
 
+  /**
+   * Lista principal de produtos.
+   * Bruno:
+   * Para atualizar estoque por enquanto, altero o campo status do produto.
+   * Exemplo: status: 'Disponível' para status: 'Vendido'.
+   */
   produtos: Produto[] = [
     {
       id: 1,
@@ -68,7 +153,7 @@ get totalDisponiveis(): number {
       comodo: 'Suíte',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 799,99',
+      valorVenda: 'R$ 699,99',
       status: 'Disponível',
       imagem: 'assets/001-cama-box-casal.png'
     },
@@ -88,7 +173,7 @@ get totalDisponiveis(): number {
       comodo: 'Suíte',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.499,00',
+      valorVenda: 'R$ 1.299,00',
       status: 'Disponível',
       imagem: 'assets/003-comoda-207cm.png'
     },
@@ -120,7 +205,7 @@ get totalDisponiveis(): number {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 3.000,00',
-      valorVenda: 'R$ 1.999,00',
+      valorVenda: 'R$ 1.699,00',
       status: 'Disponível',
       imagem: 'assets/006-guarda-roupa-solteiro.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6867722404'
@@ -131,7 +216,7 @@ get totalDisponiveis(): number {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.499,00',
+      valorVenda: 'R$ 1.299,00',
       status: 'Disponível',
       imagem: 'assets/007-comoda-dormitorio-97cm.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837629970'
@@ -142,7 +227,7 @@ get totalDisponiveis(): number {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 999,00',
+      valorVenda: 'R$ 899,00',
       status: 'Disponível',
       imagem: 'assets/008-bicama-ortobom.png'
     },
@@ -152,7 +237,7 @@ get totalDisponiveis(): number {
       comodo: 'Escritório',
       categoriaComodo: 'Escritório',
       valorOriginal: 'R$ 1.500,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 799,00',
       status: 'Disponível',
       imagem: 'assets/009-cadeira-gamer-vermelha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6836863246'
@@ -195,7 +280,7 @@ get totalDisponiveis(): number {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.399,00',
+      valorVenda: 'R$ 1.199,00',
       status: 'Disponível',
       imagem: 'assets/013-rack-sala.png'
     },
@@ -205,7 +290,7 @@ get totalDisponiveis(): number {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 799,99',
+      valorVenda: 'R$ 699,99',
       status: 'Disponível',
       imagem: 'assets/014-sofa-cama-laila.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837463500'
@@ -216,7 +301,7 @@ get totalDisponiveis(): number {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 999,00',
-      valorVenda: 'R$ 599,00',
+      valorVenda: 'R$ 499,00',
       status: 'Disponível',
       imagem: 'assets/015-mesa-jantar-6-cadeiras.png'
     },
@@ -226,7 +311,7 @@ get totalDisponiveis(): number {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.850,00',
-      valorVenda: 'R$ 1.299,00',
+      valorVenda: 'R$ 1.099,00',
       status: 'Disponível',
       imagem: 'assets/016-tv-lg-49.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837061448'
@@ -237,7 +322,7 @@ get totalDisponiveis(): number {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 799,00',
       status: 'Disponível',
       imagem: 'assets/017-fogao-consul-4-bocas.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4709019557'
@@ -248,7 +333,7 @@ get totalDisponiveis(): number {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 749,00',
       status: 'Disponível',
       imagem: 'assets/018-microondas-electrolux.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837313382'
@@ -259,7 +344,7 @@ get totalDisponiveis(): number {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 2.200,00',
-      valorVenda: 'R$ 1.790,00',
+      valorVenda: 'R$ 1.590,00',
       status: 'Disponível',
       imagem: 'assets/019-geladeira-electrolux.png'
     },
@@ -299,7 +384,7 @@ get totalDisponiveis(): number {
       comodo: 'Lavanderia',
       categoriaComodo: 'Lavanderia',
       valorOriginal: 'R$ 2.190,00',
-      valorVenda: 'R$ 1.790,00',
+      valorVenda: 'R$ 1.590,00',
       status: 'Disponível',
       imagem: 'assets/023-lava-e-seca-lg.png'
     },
@@ -314,9 +399,47 @@ get totalDisponiveis(): number {
       imagem: 'assets/024-teclado-yamaha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4714781733'
     }
+    ,
+    {
+      id: 25,
+      nome: 'Contrabaixo Giannini GB-200 NA 4 cordas',
+      comodo: 'Escritório',
+      categoriaComodo: 'Escritório',
+      valorOriginal: 'R$ 1000,00',
+      valorVenda: 'R$ 799,00',
+      status: 'Vendido',
+      imagem: 'assets/baixo.PNG'
+    },
+    {
+      id: 26,
+      nome: 'Guitarra Giannini Standard Series G-100',
+      comodo: 'Escritório',
+      categoriaComodo: 'Escritório',
+      valorOriginal: 'R$ 600,00',
+      valorVenda: 'R$ 399,00',
+      status: 'Vendido',
+      imagem: 'assets/guitarra.png'
+    }
   ];
 
-get produtosFiltrados(): Produto[] {
+  /**
+   * Bruno:
+   * Esta é a regra principal da tela.
+   * Aqui o Angular monta a lista final de produtos a exibir.
+   *
+   * Primeiro aplica filtros:
+   * - Status
+   * - Cômodo
+   * - Pesquisa por nome
+   *
+   * Depois aplica ordenação:
+   * - Relevância
+   * - Menor preço
+   * - Maior preço
+   * - Nome A-Z
+   * - Nome Z-A
+   */
+  get produtosFiltrados(): Produto[] {
   let resultado = this.produtos.filter((produto) => {
     const passaStatus =
       this.statusSelecionado === 'Todos' ||
@@ -349,10 +472,49 @@ get produtosFiltrados(): Produto[] {
     resultado = resultado.sort((a, b) => b.nome.localeCompare(a.nome));
   }
 
+  if (this.ordenacaoSelecionada === 'Relevância') {
+    resultado = resultado.sort((a, b) => {
+      return this.prioridadeStatus(a.status) - this.prioridadeStatus(b.status);
+    });
+  }
+
   return resultado;
 }
 
-private valorNumerico(valor: string): number {
+/**
+ * Bruno:
+ * Define a ordem padrão dos produtos quando a página abre.
+ *
+ * Objetivo de negócio:
+ * Mostrar primeiro os itens disponíveis, porque eles têm maior chance de venda.
+ *
+ * Ordem:
+ * 1. Disponível
+ * 2. Reservado
+ * 3. Indisponível
+ * 4. Vendido
+ */
+  private prioridadeStatus(status: StatusProduto): number {
+  const prioridades: Record<StatusProduto, number> = {
+    'Disponível': 1,
+    'Reservado': 2,
+    'Indisponível': 3,
+    'Vendido': 4
+  };
+
+  return prioridades[status];
+}
+
+/**
+ * Bruno:
+ * Converte valores em formato brasileiro para número.
+ *
+ * Exemplo:
+ * 'R$ 1.299,00' vira 1299
+ *
+ * Isso permite ordenar por menor preço ou maior preço.
+ */
+  private valorNumerico(valor: string): number {
   return Number(
     valor
       .replace('R$', '')
@@ -362,14 +524,23 @@ private valorNumerico(valor: string): number {
   );
 }
 
-@HostListener('document:contextmenu', ['$event'])
-bloquearBotaoDireito(event: MouseEvent): void {
+/**
+ * Bloqueio simples do botão direito.
+ * Importante:
+ * Isto dificulta para curiosos, mas não impede alguém técnico de acessar arquivos públicos.
+ */
+  @HostListener('document:contextmenu', ['$event'])
+  bloquearBotaoDireito(event: MouseEvent): void {
   event.preventDefault();
-  alert('Ops, não foi dessa vez, jovem!!! Acesso ao código-fonte indisponível.');
+  alert('KKKK Ops, não foi dessa vez, jovem!!! Acesso ao código-fonte indisponível.');
 }
 
-@HostListener('document:keydown', ['$event'])
-bloquearAtalhos(event: KeyboardEvent): void {
+/**
+ * Bloqueio simples de atalhos como F12 e Ctrl+U.
+ * Serve como barreira visual para usuários comuns.
+ */
+  @HostListener('document:keydown', ['$event'])
+  bloquearAtalhos(event: KeyboardEvent): void {
   const tecla = event.key.toLowerCase();
 
   const bloqueado =
@@ -382,5 +553,30 @@ bloquearAtalhos(event: KeyboardEvent): void {
     alert('Ops, acesso ao código-fonte indisponível.');
   }
 }
+
+
+    /**
+     * Bruno Santana - 30/05/2026
+     * RastrearClique
+     * Envia eventos personalizados para o Google Analytics.
+     * Usamos isso para saber quais produtos receberam cliques
+     * em "Detalhes" e em "Mercado Livre".
+     */
+    rastrearClique(tipoClique: 'Detalhes' | 'Mercado Livre', produto: Produto): void {
+      const gtag = (window as any).gtag;
+
+      if (!gtag) {
+        return;
+      }
+
+      gtag('event', 'clique_produto', {
+        tipo_clique: tipoClique,
+        produto_id: produto.id,
+        produto_nome: produto.nome,
+        produto_status: produto.status,
+        produto_comodo: produto.categoriaComodo,
+        produto_valor: produto.valorVenda
+      });
+    }
 
 }

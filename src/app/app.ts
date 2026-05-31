@@ -13,6 +13,7 @@
  * - pesquisa
  * - ordenação
  * - proteção simples contra botão direito e atalhos de inspeção
+ * - indicador visual de novos descontos em produtos selecionados
  *
  * Conceitos estudados:
  * - Angular Component
@@ -69,6 +70,12 @@ type Produto = {
   status: StatusProduto;
   imagem: string;
   linkMercadoLivre?: string;
+
+  /**
+   * Bruno - 31/5/26 - indicador de novo desconto.
+   * Quando true, o card exibe o selo "Novo desconto" no site.
+   */
+  novoDesconto?: boolean;
 };
 
 /**
@@ -154,6 +161,8 @@ export class App {
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
       valorVenda: 'R$ 699,99',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/001-cama-box-casal.png'
     },
@@ -174,6 +183,8 @@ export class App {
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
       valorVenda: 'R$ 1.299,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/003-comoda-207cm.png'
     },
@@ -186,7 +197,7 @@ export class App {
       valorVenda: 'R$ 899,00',
       status: 'Vendido',
       imagem: 'assets/004-tv-32.png',
-      linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4707063645'
+      //linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
     },
     {
       id: 5,
@@ -206,6 +217,8 @@ export class App {
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 3.000,00',
       valorVenda: 'R$ 1.699,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/006-guarda-roupa-solteiro.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6867722404'
@@ -217,6 +230,8 @@ export class App {
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
       valorVenda: 'R$ 1.299,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/007-comoda-dormitorio-97cm.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837629970'
@@ -228,6 +243,8 @@ export class App {
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
       valorVenda: 'R$ 899,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/008-bicama-ortobom.png'
     },
@@ -238,6 +255,8 @@ export class App {
       categoriaComodo: 'Escritório',
       valorOriginal: 'R$ 1.500,00',
       valorVenda: 'R$ 799,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/009-cadeira-gamer-vermelha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6836863246'
@@ -281,6 +300,8 @@ export class App {
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 2.000,00',
       valorVenda: 'R$ 1.199,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/013-rack-sala.png'
     },
@@ -291,6 +312,8 @@ export class App {
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.200,00',
       valorVenda: 'R$ 699,99',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/014-sofa-cama-laila.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837463500'
@@ -302,6 +325,8 @@ export class App {
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 999,00',
       valorVenda: 'R$ 499,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/015-mesa-jantar-6-cadeiras.png'
     },
@@ -312,6 +337,8 @@ export class App {
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.850,00',
       valorVenda: 'R$ 1.099,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/016-tv-lg-49.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837061448'
@@ -323,6 +350,8 @@ export class App {
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
       valorVenda: 'R$ 799,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/017-fogao-consul-4-bocas.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4709019557'
@@ -334,9 +363,12 @@ export class App {
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
       valorVenda: 'R$ 749,00',
-      status: 'Disponível',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
+      // Bruno - 31/5/26 - vendido.
+      status: 'Vendido',
       imagem: 'assets/018-microondas-electrolux.png',
-      linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837313382'
+      //linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
     },
     {
       id: 19,
@@ -345,6 +377,8 @@ export class App {
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 2.200,00',
       valorVenda: 'R$ 1.590,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/019-geladeira-electrolux.png'
     },
@@ -385,6 +419,8 @@ export class App {
       categoriaComodo: 'Lavanderia',
       valorOriginal: 'R$ 2.190,00',
       valorVenda: 'R$ 1.590,00',
+      // Bruno - 31/5/26 - indicador de novo desconto.
+      novoDesconto: true,
       status: 'Disponível',
       imagem: 'assets/023-lava-e-seca-lg.png'
     },
@@ -397,7 +433,7 @@ export class App {
       valorVenda: 'R$ 449,00',
       status: 'Vendido',
       imagem: 'assets/024-teclado-yamaha.png',
-      linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4714781733'
+      //linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
     }
     ,
     {

@@ -1,3 +1,27 @@
+/*
+============================================================
+Projeto: Elo - AP do Bruno - Desapego
+Autor: Bruno Santana
+Data: 30/05/2026
+
+Objetivo:
+Este arquivo controla o visual do catálogo.
+
+Conceitos estudados:
+- SCSS / CSS
+- Grid layout
+- Cards
+- Botões
+- Status visuais
+- Responsividade com @media
+
+Importante:
+A primeira parte mantém a experiência do desktop.
+A parte final, dentro de @media (max-width: 768px), altera apenas celular.
+============================================================
+*/
+
+/* Estrutura geral da página. */
 :host {
   display: block;
   font-family: Arial, sans-serif;
@@ -77,10 +101,7 @@
   color: #b42318;
 }
 
-//.status.indisponivel {
-//  background: #e5e7eb;
-//  color: #374151;
-//}
+/* Status Indisponível: usado para itens que podem ficar no apartamento. */
 .status.indisponivel {
   background: #fff3cd;
   color: #856404;
@@ -237,4 +258,233 @@
   background: #d1d5db;
   color: #374151;
   cursor: not-allowed;
+}
+
+/*
+============================================================
+Responsividade mobile
+Bruno Santana - 30/05/2026
+
+Este bloco só é aplicado em telas pequenas, como celulares.
+
+Objetivo:
+- Manter o laptop exatamente como está
+- Compactar alerta, cabeçalho, resumo e filtros
+- Exibir 2 cards por linha no celular
+- Manter preço antigo e preço atual visíveis
+============================================================
+*/
+@media (max-width: 768px) {
+  :host {
+    padding: 10px;
+  }
+
+  .topo h1 {
+  font-size: 1.8rem;
+  line-height: 1.1;
+  }
+
+  .alerta-seguranca {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .alerta-seguranca strong {
+    font-size: 13px;
+  }
+
+  .alerta-seguranca p {
+    margin-top: 4px;
+  }
+
+  .topo {
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+
+  .topo h1 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .topo p {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .resumo {
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .resumo p {
+    margin: 0 0 6px;
+  }
+
+  .resumo p:last-child {
+    margin-bottom: 0;
+  }
+
+  .filtros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .filtros label {
+    gap: 4px;
+    font-size: 12px;
+  }
+
+  .filtros label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .filtros input,
+  .filtros select {
+    min-width: 0;
+    width: 100%;
+    height: 36px;
+    padding: 7px 9px;
+    border-radius: 9px;
+    font-size: 12px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .produto {
+    border-radius: 14px;
+  }
+
+  .imagem-area {
+    height: 150px;
+  }
+
+  .imagem-area img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .conteudo {
+    padding: 10px;
+  }
+
+  .linha-status {
+    margin-bottom: 6px;
+  }
+
+  .status {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .produto h2 {
+    font-size: 14px;
+    line-height: 1.15;
+    margin: 0 0 8px;
+    min-height: 32px;
+  }
+
+  .preco-antigo {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .preco {
+    font-size: 17px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .acoes {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .botao {
+    padding: 9px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    line-height: 1.1;
+  }
+/*
+  .botao-detalhes {
+    font-size: 0;
+  }
+
+  .botao-detalhes::after {
+    content: 'Detalhes';
+    font-size: 11px;
+  }
+
+  .botao-ml {
+    font-size: 0;
+  }
+
+  .botao-ml::after {
+    content: 'Mercado Livre';
+    font-size: 11px;
+  }
+*/
+  .botao-bloqueado {
+    font-size: 10px;
+  }
+
+}
+
+/*
+Ajuste extra para celulares muito estreitos.
+Se a tela for pequena demais, reduz um pouco mais as imagens
+para caber melhor a grade com 2 colunas.
+*/
+@media (max-width: 390px) {
+  .imagem-area {
+    height: 135px;
+  }
+
+  .produto h2 {
+    font-size: 13px;
+  }
+
+  .preco {
+    font-size: 16px;
+  }
+
+  .botao {
+    font-size: 10px;
+  }
+}
+
+.texto-mobile {
+  display: none;
+}
+
+.texto-desktop {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .texto-desktop {
+    display: none;
+  }
+
+  .texto-mobile {
+    display: inline;
+  }
+
+  .botao-detalhes::after,
+  .botao-ml::after {
+    content: none;
+  }
 }

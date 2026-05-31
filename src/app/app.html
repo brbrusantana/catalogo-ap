@@ -116,6 +116,17 @@ No celular, o app.scss ajusta para 2 cards por linha.
           </span>
         </div>
 
+        <!--
+        Bruno - 31/5/26 - indicador de novo desconto.
+        Este selo aparece apenas nos produtos que tiveram nova redução de preço.
+        A marcação vem do campo produto.novoDesconto no app.ts.
+        -->
+        @if (produto.novoDesconto) {
+          <div class="selo-desconto">
+            🔥 Novo desconto
+          </div>
+        }
+
         <h2>{{ produto.nome }}</h2>
 
         <!-- Mantive o preço antigo no mobile porque ajuda a mostrar o desconto. -->

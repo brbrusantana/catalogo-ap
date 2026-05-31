@@ -107,6 +107,24 @@ A parte final, dentro de @media (max-width: 768px), altera apenas celular.
   color: #856404;
 }
 
+/*
+ * Bruno - 31/5/26 - indicador de novo desconto.
+ * Selo usado nos cards dos produtos que receberam nova redução de preço.
+ * Objetivo: chamar atenção sem alterar o layout principal do catálogo.
+ */
+.selo-desconto {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #fff3cd;
+  color: #856404;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 .status.reservado {
   background: #fff3cd;
   color: #946200;
@@ -486,5 +504,18 @@ para caber melhor a grade com 2 colunas.
   .botao-detalhes::after,
   .botao-ml::after {
     content: none;
+  }
+}
+
+/*
+ * Bruno - 31/5/26 - indicador de novo desconto no mobile.
+ * No celular o selo fica menor para caber bem em cards com 2 colunas.
+ */
+@media (max-width: 768px) {
+  .selo-desconto {
+    margin-bottom: 6px;
+    padding: 5px 7px;
+    font-size: 10px;
+    line-height: 1.1;
   }
 }
