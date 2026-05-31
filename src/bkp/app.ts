@@ -1,52 +1,13 @@
-/**
- * ============================================================
- * Projeto: Elo - AP do Bruno - Desapego
- * Autor: Bruno Santana
- * Data: 30/05/2026
- *
- * Objetivo:
- * Este arquivo controla os dados e as regras do catálogo.
- * Aqui ficam:
- * - lista de produtos
- * - status dos itens
- * - filtros
- * - pesquisa
- * - ordenação
- * - proteção simples contra botão direito e atalhos de inspeção
- *
- * Conceitos estudados:
- * - Angular Component
- * - TypeScript
- * - Tipos personalizados
- * - Arrays
- * - Filter()
- * - Sort()
- * - Getters
- * - Event listeners com @HostListener
- * ============================================================
- */
-
-// Importa o FormsModule para permitir o uso de [(ngModel)] nos filtros do HTML.
+//import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// Importa recursos principais do Angular usados neste componente.
 import { Component, HostListener, signal } from '@angular/core';
 
-/**
- * Bruno:
- * Tipo com os status permitidos para um produto.
- * Isso evita digitar status diferentes por engano.
- */
 type StatusProduto =
   | 'Disponível'
   | 'Reservado'
   | 'Vendido'
   | 'Indisponível';
 
-/**
- * Bruno:
- * Tipo com os cômodos usados nos filtros do catálogo.
- * Suíte e Dormitório 2 entram como categoria geral Dormitório.
- */
 type CategoriaComodo =
   | 'Dormitório'
   | 'Sala'
@@ -54,11 +15,6 @@ type CategoriaComodo =
   | 'Lavanderia'
   | 'Escritório';
 
-/**
- * Bruno:
- * Modelo de dados de cada produto.
- * Cada item da lista precisa seguir esta estrutura.
- */
 type Produto = {
   id: number;
   nome: string;
@@ -71,12 +27,6 @@ type Produto = {
   linkMercadoLivre?: string;
 };
 
-/**
- * Componente principal da aplicação Angular.
- * selector: nome da tag usada no index.html, <app-root>.
- * templateUrl: aponta para o app.html.
- * styleUrl: aponta para o app.scss.
- */
 @Component({
   selector: 'app-root',
   imports: [FormsModule],
@@ -84,40 +34,18 @@ type Produto = {
   styleUrl: './app.scss'
 })
 export class App {
-  /**
-   * Título exibido no cabeçalho azul do catálogo.
-   * Signal é um recurso do Angular para guardar um valor reativo.
-   */
-  protected readonly title = signal('[Desapego] Catálogo de Venda');
+  protected readonly title = signal('Catálogo de Venda: Desapego do Bruno');
 
-  /**
-   * Valores iniciais dos filtros.
-   * Ao abrir a página, todos os produtos aparecem.
-   */
   statusSelecionado = 'Todos';
   comodoSelecionado = 'Todos';
 
-  /**
-   * Opções exibidas nos combos de filtro do HTML.
-   */
   statusOptions = ['Todos', 'Disponível', 'Reservado', 'Vendido', 'Indisponível'];
   comodoOptions = ['Todos', 'Dormitório', 'Sala', 'Cozinha', 'Lavanderia', 'Escritório'];
 
-  /**
-   * Texto digitado no campo de pesquisa.
-   */
   pesquisa = '';
+ordenacaoSelecionada = 'Relevância';
 
-  /**
-   * Ordenação inicial.
-   * Relevância significa: mostrar primeiro o que ainda está disponível para venda.
-   */
-  ordenacaoSelecionada = 'Relevância';
-
-  /**
-   * Opções do campo Ordenar.
-   */
-  ordenacaoOptions = [
+ordenacaoOptions = [
   'Relevância',
   'Menor preço',
   'Maior preço',
@@ -125,27 +53,14 @@ export class App {
   'Nome Z-A'
 ];
 
-  /**
-   * Total geral de itens cadastrados no catálogo.
-   */
-  get totalItens(): number {
+get totalItens(): number {
   return this.produtos.length;
 }
 
-  /**
-   * Total de itens disponíveis para venda.
-   * Este número aparece no resumo verde do catálogo.
-   */
-  get totalDisponiveis(): number {
+get totalDisponiveis(): number {
   return this.produtos.filter((produto) => produto.status === 'Disponível').length;
 }
 
-  /**
-   * Lista principal de produtos.
-   * Bruno:
-   * Para atualizar estoque por enquanto, altero o campo status do produto.
-   * Exemplo: status: 'Disponível' para status: 'Vendido'.
-   */
   produtos: Produto[] = [
     {
       id: 1,
@@ -401,24 +316,7 @@ export class App {
     }
   ];
 
-  /**
-   * Bruno:
-   * Esta é a regra principal da tela.
-   * Aqui o Angular monta a lista final de produtos a exibir.
-   *
-   * Primeiro aplica filtros:
-   * - Status
-   * - Cômodo
-   * - Pesquisa por nome
-   *
-   * Depois aplica ordenação:
-   * - Relevância
-   * - Menor preço
-   * - Maior preço
-   * - Nome A-Z
-   * - Nome Z-A
-   */
-  get produtosFiltrados(): Produto[] {
+get produtosFiltrados(): Produto[] {
   let resultado = this.produtos.filter((produto) => {
     const passaStatus =
       this.statusSelecionado === 'Todos' ||
@@ -451,49 +349,10 @@ export class App {
     resultado = resultado.sort((a, b) => b.nome.localeCompare(a.nome));
   }
 
-  if (this.ordenacaoSelecionada === 'Relevância') {
-    resultado = resultado.sort((a, b) => {
-      return this.prioridadeStatus(a.status) - this.prioridadeStatus(b.status);
-    });
-  }
-
   return resultado;
 }
 
-/**
- * Bruno:
- * Define a ordem padrão dos produtos quando a página abre.
- *
- * Objetivo de negócio:
- * Mostrar primeiro os itens disponíveis, porque eles têm maior chance de venda.
- *
- * Ordem:
- * 1. Disponível
- * 2. Reservado
- * 3. Indisponível
- * 4. Vendido
- */
-  private prioridadeStatus(status: StatusProduto): number {
-  const prioridades: Record<StatusProduto, number> = {
-    'Disponível': 1,
-    'Reservado': 2,
-    'Indisponível': 3,
-    'Vendido': 4
-  };
-
-  return prioridades[status];
-}
-
-/**
- * Bruno:
- * Converte valores em formato brasileiro para número.
- *
- * Exemplo:
- * 'R$ 1.299,00' vira 1299
- *
- * Isso permite ordenar por menor preço ou maior preço.
- */
-  private valorNumerico(valor: string): number {
+private valorNumerico(valor: string): number {
   return Number(
     valor
       .replace('R$', '')
@@ -503,23 +362,14 @@ export class App {
   );
 }
 
-/**
- * Bloqueio simples do botão direito.
- * Importante:
- * Isto dificulta para curiosos, mas não impede alguém técnico de acessar arquivos públicos.
- */
-  @HostListener('document:contextmenu', ['$event'])
-  bloquearBotaoDireito(event: MouseEvent): void {
+@HostListener('document:contextmenu', ['$event'])
+bloquearBotaoDireito(event: MouseEvent): void {
   event.preventDefault();
-  alert('KKKK Ops, não foi dessa vez, jovem!!! Acesso ao código-fonte indisponível.');
+  alert('Ops, não foi dessa vez, jovem!!! Acesso ao código-fonte indisponível.');
 }
 
-/**
- * Bloqueio simples de atalhos como F12 e Ctrl+U.
- * Serve como barreira visual para usuários comuns.
- */
-  @HostListener('document:keydown', ['$event'])
-  bloquearAtalhos(event: KeyboardEvent): void {
+@HostListener('document:keydown', ['$event'])
+bloquearAtalhos(event: KeyboardEvent): void {
   const tecla = event.key.toLowerCase();
 
   const bloqueado =

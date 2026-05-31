@@ -1,0 +1,111 @@
+<section class="alerta-seguranca">
+  <strong>Atenção, não caia em golpes!!!</strong>
+  <p>
+    Este catálogo é apenas para consulta dos itens. Não efetue nenhum pagamento
+    sem antes ver o produto e confirmar diretamente no WhatsApp dos responsáveis
+    pelo desapego: Bruno Santana ou Ana Paula Santana. Não compre por links
+    enviados por terceiros.
+  </p>
+</section>
+
+<header class="topo">
+  <h1>{{ title() }}</h1>
+  <p>Itens disponíveis para venda. Consulte o status de cada produto.</p>
+</header>
+
+<section class="resumo">
+  {{ totalDisponiveis }} dos {{ totalItens }} itens continuam disponíveis! Corra e não perca essa chance!!
+  <p class="resultado-filtro">
+  Exibindo {{ produtosFiltrados.length }} itens do catálogo, de acordo com os filtros aplicados. 
+  </p>
+</section>
+
+<section class="filtros">
+  <label>
+    Pesquisar
+    <input
+      type="text"
+      placeholder="Digite o nome do produto"
+      [(ngModel)]="pesquisa"
+    />
+  </label>
+
+  <label>
+    Status
+    <select [(ngModel)]="statusSelecionado">
+      @for (status of statusOptions; track status) {
+        <option [value]="status">{{ status }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Cômodo
+    <select [(ngModel)]="comodoSelecionado">
+      @for (comodo of comodoOptions; track comodo) {
+        <option [value]="comodo">{{ comodo }}</option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Ordenar
+    <select [(ngModel)]="ordenacaoSelecionada">
+      @for (opcao of ordenacaoOptions; track opcao) {
+        <option [value]="opcao">{{ opcao }}</option>
+      }
+    </select>
+  </label>
+</section>
+
+<section class="grid">
+  @for (produto of produtosFiltrados; track produto.id) {
+    <article class="produto" [class.produto-vendido]="produto.status === 'Vendido'">
+       <div class="imagem-area">
+        <img [src]="produto.imagem" [alt]="produto.nome">
+      </div>
+
+      <div class="conteudo">
+        <div class="linha-status">
+          <span
+            class="status"
+            [class.disponivel]="produto.status === 'Disponível'"
+            [class.vendido]="produto.status === 'Vendido'"
+            [class.reservado]="produto.status === 'Reservado'"
+            [class.indisponivel]="produto.status === 'Indisponível'"
+            >
+            {{ produto.status }}
+          </span>
+        </div>
+
+        <h2>{{ produto.nome }}</h2>
+
+        <p class="preco-antigo">De: {{ produto.valorOriginal }}</p>
+        <p class="preco">Por: {{ produto.valorVenda }}</p>
+
+        <div class="acoes">
+        @if (produto.status === 'Indisponível') {
+          <button class="botao botao-bloqueado" disabled>
+            Indisponível para negociação
+          </button>
+        } @else if (produto.status === 'Vendido') {
+          <button class="botao botao-bloqueado" disabled>
+            Produto vendido
+          </button>
+        } @else {
+          <a class="botao botao-detalhes" [href]="produto.imagem" target="_blank">
+            Ver anúncio completo
+          </a>
+        }
+
+        @if (produto.linkMercadoLivre && produto.status !== 'Indisponível') {
+          <a class="botao botao-ml" [href]="produto.linkMercadoLivre" target="_blank">
+            Ver no Mercado Livre
+          </a>
+        }
+      </div>
+      </div>
+    </article>
+
+  }
+</section>
