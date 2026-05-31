@@ -138,14 +138,24 @@ No celular, o app.scss ajusta para 2 cards por linha.
               Produto vendido
             </button>
           } @else {
-            <a class="botao botao-detalhes" [href]="produto.imagem" target="_blank">
+            <a
+              class="botao botao-detalhes"
+              [href]="produto.imagem"
+              target="_blank"
+              (click)="rastrearClique('Detalhes', produto)"
+            >
               <span class="texto-desktop">Ver anúncio completo</span>
               <span class="texto-mobile">Detalhes</span>
             </a>
           }
 
           @if (produto.linkMercadoLivre && produto.status !== 'Indisponível') {
-            <a class="botao botao-ml" [href]="produto.linkMercadoLivre" target="_blank">
+            <a
+              class="botao botao-ml"
+              [href]="produto.linkMercadoLivre"
+              target="_blank"
+              (click)="rastrearClique('Mercado Livre', produto)"
+            >
               <span class="texto-desktop">Ver no Mercado Livre</span>
               <span class="texto-mobile">Mercado Livre</span>
             </a>

@@ -533,4 +533,29 @@ export class App {
   }
 }
 
+
+    /**
+     * Bruno Santana - 30/05/2026
+     * RastrearClique
+     * Envia eventos personalizados para o Google Analytics.
+     * Usamos isso para saber quais produtos receberam cliques
+     * em "Detalhes" e em "Mercado Livre".
+     */
+    rastrearClique(tipoClique: 'Detalhes' | 'Mercado Livre', produto: Produto): void {
+      const gtag = (window as any).gtag;
+
+      if (!gtag) {
+        return;
+      }
+
+      gtag('event', 'clique_produto', {
+        tipo_clique: tipoClique,
+        produto_id: produto.id,
+        produto_nome: produto.nome,
+        produto_status: produto.status,
+        produto_comodo: produto.categoriaComodo,
+        produto_valor: produto.valorVenda
+      });
+    }
+
 }
