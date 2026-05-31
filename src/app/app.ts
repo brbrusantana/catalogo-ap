@@ -153,7 +153,7 @@ export class App {
       comodo: 'Suíte',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 799,99',
+      valorVenda: 'R$ 699,99',
       status: 'Disponível',
       imagem: 'assets/001-cama-box-casal.png'
     },
@@ -173,7 +173,7 @@ export class App {
       comodo: 'Suíte',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.499,00',
+      valorVenda: 'R$ 1.299,00',
       status: 'Disponível',
       imagem: 'assets/003-comoda-207cm.png'
     },
@@ -205,7 +205,7 @@ export class App {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 3.000,00',
-      valorVenda: 'R$ 1.999,00',
+      valorVenda: 'R$ 1.699,00',
       status: 'Disponível',
       imagem: 'assets/006-guarda-roupa-solteiro.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6867722404'
@@ -216,7 +216,7 @@ export class App {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.499,00',
+      valorVenda: 'R$ 1.299,00',
       status: 'Disponível',
       imagem: 'assets/007-comoda-dormitorio-97cm.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837629970'
@@ -227,7 +227,7 @@ export class App {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 999,00',
+      valorVenda: 'R$ 899,00',
       status: 'Disponível',
       imagem: 'assets/008-bicama-ortobom.png'
     },
@@ -237,7 +237,7 @@ export class App {
       comodo: 'Escritório',
       categoriaComodo: 'Escritório',
       valorOriginal: 'R$ 1.500,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 799,00',
       status: 'Disponível',
       imagem: 'assets/009-cadeira-gamer-vermelha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6836863246'
@@ -280,7 +280,7 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.399,00',
+      valorVenda: 'R$ 1.199,00',
       status: 'Disponível',
       imagem: 'assets/013-rack-sala.png'
     },
@@ -290,7 +290,7 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 799,99',
+      valorVenda: 'R$ 699,99',
       status: 'Disponível',
       imagem: 'assets/014-sofa-cama-laila.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837463500'
@@ -301,7 +301,7 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 999,00',
-      valorVenda: 'R$ 599,00',
+      valorVenda: 'R$ 499,00',
       status: 'Disponível',
       imagem: 'assets/015-mesa-jantar-6-cadeiras.png'
     },
@@ -311,7 +311,7 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.850,00',
-      valorVenda: 'R$ 1.299,00',
+      valorVenda: 'R$ 1.099,00',
       status: 'Disponível',
       imagem: 'assets/016-tv-lg-49.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837061448'
@@ -322,7 +322,7 @@ export class App {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 799,00',
       status: 'Disponível',
       imagem: 'assets/017-fogao-consul-4-bocas.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4709019557'
@@ -333,7 +333,7 @@ export class App {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 749,00',
       status: 'Disponível',
       imagem: 'assets/018-microondas-electrolux.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837313382'
@@ -344,7 +344,7 @@ export class App {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 2.200,00',
-      valorVenda: 'R$ 1.790,00',
+      valorVenda: 'R$ 1.590,00',
       status: 'Disponível',
       imagem: 'assets/019-geladeira-electrolux.png'
     },
@@ -384,7 +384,7 @@ export class App {
       comodo: 'Lavanderia',
       categoriaComodo: 'Lavanderia',
       valorOriginal: 'R$ 2.190,00',
-      valorVenda: 'R$ 1.790,00',
+      valorVenda: 'R$ 1.590,00',
       status: 'Disponível',
       imagem: 'assets/023-lava-e-seca-lg.png'
     },
@@ -398,6 +398,27 @@ export class App {
       status: 'Vendido',
       imagem: 'assets/024-teclado-yamaha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4714781733'
+    }
+    ,
+    {
+      id: 25,
+      nome: 'Contrabaixo Giannini GB-200 NA 4 cordas',
+      comodo: 'Escritório',
+      categoriaComodo: 'Escritório',
+      valorOriginal: 'R$ 1000,00',
+      valorVenda: 'R$ 799,00',
+      status: 'Vendido',
+      imagem: 'assets/baixo.PNG'
+    },
+    {
+      id: 26,
+      nome: 'Guitarra Giannini Standard Series G-100',
+      comodo: 'Escritório',
+      categoriaComodo: 'Escritório',
+      valorOriginal: 'R$ 600,00',
+      valorVenda: 'R$ 399,00',
+      status: 'Vendido',
+      imagem: 'assets/guitarra.png'
     }
   ];
 
