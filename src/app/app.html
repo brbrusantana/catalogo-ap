@@ -140,27 +140,37 @@ No celular, o app.scss ajusta para 2 cards por linha.
         - Disponível: abre a arte do anúncio
         -->
         <div class="acoes">
-          @if (produto.status === 'Indisponível') {
-            <button class="botao botao-bloqueado" disabled>
-              Indisponível para negociação
-            </button>
-          } @else if (produto.status === 'Vendido') {
-            <button class="botao botao-bloqueado" disabled>
-              Produto vendido
-            </button>
-          } @else {
-            <a
-              class="botao botao-detalhes"
-              [href]="produto.imagem"
-              target="_blank"
-              (click)="rastrearClique('Detalhes', produto)"
-            >
-              <span class="texto-desktop">Ver anúncio completo</span>
-              <span class="texto-mobile">Detalhes</span>
-            </a>
-          }
 
-          @if (produto.linkMercadoLivre && produto.status !== 'Indisponível') {
+        <!-- Bruno - 01/06/2026 - bloqueio de cliques por status -->
+
+        @if (produto.status === 'Disponível') {
+
+          <a
+            class="botao botao-detalhes"
+            [href]="produto.imagem"
+            target="_blank"
+            (click)="rastrearClique('Detalhes', produto)"
+          >
+            <span class="texto-desktop">Ver anúncio completo</span>
+            <span class="texto-mobile">Detalhes</span>
+          </a>
+
+        } @else {
+
+          <button
+            class="botao botao-bloqueado"
+            disabled
+          >
+            <span class="texto-desktop">Ver anúncio completo</span>
+            <span class="texto-mobile">Detalhes</span>
+          </button>
+
+        }
+
+        @if (produto.linkMercadoLivre) {
+
+          @if (produto.status === 'Disponível') {
+
             <a
               class="botao botao-ml"
               [href]="produto.linkMercadoLivre"
@@ -170,8 +180,22 @@ No celular, o app.scss ajusta para 2 cards por linha.
               <span class="texto-desktop">Ver no Mercado Livre</span>
               <span class="texto-mobile">Mercado Livre</span>
             </a>
+
+          } @else {
+
+            <button
+              class="botao botao-bloqueado"
+              disabled
+            >
+              <span class="texto-desktop">Ver no Mercado Livre</span>
+              <span class="texto-mobile">Mercado Livre</span>
+            </button>
+
           }
-        </div>
+
+        }
+
+      </div>
       </div>
     </article>
   }

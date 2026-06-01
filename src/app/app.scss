@@ -519,3 +519,9 @@ para caber melhor a grade com 2 colunas.
     line-height: 1.1;
   }
 }
+
+.botao-bloqueado {
+  background: #d1d5db !important;
+  color: #6b7280 !important;
+  cursor: not-allowed;
+}

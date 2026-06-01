@@ -197,7 +197,7 @@ export class App {
       valorVenda: 'R$ 899,00',
       status: 'Vendido',
       imagem: 'assets/004-tv-32.png',
-      //linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
+      linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
     },
     {
       id: 5,
@@ -311,10 +311,10 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 699,99',
+      valorVenda: 'R$ 799,99',
       // Bruno - 31/5/26 - indicador de novo desconto.
-      novoDesconto: true,
-      status: 'Disponível',
+      //novoDesconto: true,
+      status: 'Reservado',
       imagem: 'assets/014-sofa-cama-laila.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837463500'
     },
@@ -368,7 +368,7 @@ export class App {
       // Bruno - 31/5/26 - vendido.
       status: 'Vendido',
       imagem: 'assets/018-microondas-electrolux.png',
-      //linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
+      linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
     },
     {
       id: 19,
@@ -433,7 +433,7 @@ export class App {
       valorVenda: 'R$ 449,00',
       status: 'Vendido',
       imagem: 'assets/024-teclado-yamaha.png',
-      //linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
+      linkMercadoLivre: 'https://brbrusantana.github.io/catalogo-ap/'
     }
     ,
     {
