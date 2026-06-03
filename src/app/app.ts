@@ -163,7 +163,7 @@ export class App {
       valorVenda: 'R$ 699,99',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Vendido',
       imagem: 'assets/001-cama-box-casal.png'
     },
     {
@@ -245,7 +245,7 @@ export class App {
       valorVenda: 'R$ 899,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Reservado',
       imagem: 'assets/008-bicama-ortobom.png'
     },
     {

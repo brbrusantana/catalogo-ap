@@ -97,7 +97,7 @@ No celular, o app.scss ajusta para 2 cards por linha.
 -->
 <section class="grid">
   @for (produto of produtosFiltrados; track produto.id) {
-    <article class="produto" [class.produto-vendido]="produto.status === 'Vendido'">
+    <article class="produto" [class.produto-vendido]="produto.status === 'Vendido' || produto.status === 'Reservado'">
       <div class="imagem-area">
         <img [src]="produto.imagem" [alt]="produto.nome">
       </div>
