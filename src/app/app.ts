@@ -147,6 +147,8 @@ export class App {
   return this.produtos.filter((produto) => produto.status === 'Disponível').length;
 }
 
+
+
   /**
    * Lista principal de produtos.
    * Bruno:
@@ -421,7 +423,7 @@ export class App {
       valorVenda: 'R$ 1.590,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Vendido',
       imagem: 'assets/023-lava-e-seca-lg.png'
     },
     {
@@ -615,4 +617,34 @@ export class App {
       });
     }
 
-}
+// Bruno - 04/06/2026 - popup inicial de oportunidade
+    mostrarPopupOportunidade = true;
+
+    ngOnInit(): void {
+      this.rastrearPopupOportunidade('popup_oportunidade_exibido');
+    }
+
+    fecharPopupOportunidade(): void {
+      this.mostrarPopupOportunidade = false;
+    }
+
+    clicarPopupOportunidade(): void {
+      this.rastrearPopupOportunidade('popup_oportunidade_clique');
+      this.fecharPopupOportunidade();
+    }
+
+    rastrearPopupOportunidade(nomeEvento: 'popup_oportunidade_exibido' | 'popup_oportunidade_clique'): void {
+      const gtag = (window as any).gtag;
+
+      if (!gtag) {
+        return;
+      }
+
+      gtag('event', nomeEvento, {
+        origem: 'popup_inicial',
+        pagina: 'catalogo_ap'
+      });
+    }
+
+
+  }

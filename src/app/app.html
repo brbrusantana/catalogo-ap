@@ -97,7 +97,7 @@ No celular, o app.scss ajusta para 2 cards por linha.
 -->
 <section class="grid">
   @for (produto of produtosFiltrados; track produto.id) {
-    <article class="produto" [class.produto-vendido]="produto.status === 'Vendido' || produto.status === 'Reservado'">
+    <article class="produto" [class.produto-vendido]="produto.status === 'Vendido' || produto.status === 'Reservado' || produto.status === 'Indisponível'">
       <div class="imagem-area">
         <img [src]="produto.imagem" [alt]="produto.nome">
       </div>
@@ -200,3 +200,34 @@ No celular, o app.scss ajusta para 2 cards por linha.
     </article>
   }
 </section>
+
+
+<!-- Bruno - 04/06/2026 - popup inicial de oportunidade -->
+@if (mostrarPopupOportunidade) {
+  <div class="popup-fundo">
+    <div class="popup-oportunidade">
+      <button
+        class="popup-fechar"
+        type="button"
+        (click)="fecharPopupOportunidade()"
+      >
+        ×
+      </button>
+
+      <h2>🔥 Não perca essa oportunidade!!!</h2>
+
+      <p>
+        Mais da metade dos itens já foi vendida e os últimos produtos disponíveis
+        estão com novos descontos.
+      </p>
+
+      <button
+        class="popup-botao"
+        type="button"
+        (click)="clicarPopupOportunidade()"
+      >
+        Ver itens disponíveis
+      </button>
+    </div>
+  </div>
+}
