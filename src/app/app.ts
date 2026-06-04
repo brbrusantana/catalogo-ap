@@ -259,7 +259,7 @@ export class App {
       valorVenda: 'R$ 799,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Reservado',
       imagem: 'assets/009-cadeira-gamer-vermelha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6836863246'
     },
