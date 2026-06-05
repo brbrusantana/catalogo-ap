@@ -63,10 +63,45 @@ function garantirPastas() {
 }
 
 /**
- * Data local simples para nomear arquivos.
+ * Bruno - 05/06/2026 - horário de São Paulo
+ *
+ * Gera data e hora no fuso America/Sao_Paulo
+ * para evitar sobrescrever arquivos no mesmo dia.
+ *
+ * Exemplo:
+ * 2026-06-05_14-37-22
  */
-function dataHoje() {
-  return new Date().toISOString().slice(0, 10);
+function dataHoraSaoPaulo() {
+  const agora = new Date();
+
+  const partes = new Intl.DateTimeFormat("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).formatToParts(agora);
+
+  const mapa = Object.fromEntries(
+    partes.map((parte) => [parte.type, parte.value])
+  );
+
+  return (
+    mapa.year +
+    "-" +
+    mapa.month +
+    "-" +
+    mapa.day +
+    "_" +
+    mapa.hour +
+    "-" +
+    mapa.minute +
+    "-" +
+    mapa.second
+  );
 }
 
 /**
@@ -305,7 +340,7 @@ function montarAnaliseBase() {
  * Salva snapshot diário para histórico.
  */
 function salvarHistorico(payload) {
-  const hoje = dataHoje();
+  const hoje = dataHoraSaoPaulo();
   const caminho = path.join(PASTA_HISTORICO, `${hoje}.json`);
 
   fs.writeFileSync(caminho, JSON.stringify(payload, null, 2), "utf8");
@@ -384,7 +419,7 @@ async function consultarOpenAI(payload) {
  * Salva relatório em TXT.
  */
 function salvarRelatorioTexto(texto) {
-  const hoje = dataHoje();
+  const hoje = dataHoraSaoPaulo();
   const caminho = path.join(PASTA_RELATORIOS, `relatorio-openai-${hoje}.txt`);
 
   fs.writeFileSync(caminho, texto, "utf8");
@@ -396,7 +431,7 @@ function salvarRelatorioTexto(texto) {
  * Salva base consolidada em CSV.
  */
 function salvarBaseCsv(analiseProdutos) {
-  const hoje = dataHoje();
+  const hoje = dataHoraSaoPaulo();
   const caminho = path.join(PASTA_RELATORIOS, `base-consolidada-${hoje}.csv`);
 
   const linhas = [

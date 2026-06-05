@@ -1,0 +1,107 @@
+# Resumo executivo
+
+O catálogo tem boa tração: 274 cliques em produtos, com maior concentração em itens de sala e cozinha.  
+Os produtos com maior potencial imediato são **Mesa de jantar**, **Smart TV LG 49"** e **Geladeira Electrolux inox**.
+
+A prioridade não deve ser baixar preço agora. O melhor caminho é **aumentar conversão**: destacar produtos quentes, facilitar contato direto e reforçar divulgação nas cidades com maior volume, principalmente **São Paulo** e **Bragança Paulista**.
+
+# Produtos quentes
+
+- **Mesa de jantar com 6 cadeiras** — 37 cliques em detalhes
+- **Smart TV LG 49" UHD 4K** — 20 detalhes + 6 Mercado Livre
+- **Geladeira Electrolux inox** — 32 cliques em detalhes
+
+Esses itens já demonstram interesse relevante e devem receber destaque imediato.
+
+# Produtos mornos
+
+- **Cômoda 2,07m com gavetas e portas**
+- **Guarda-roupa 3 portas e 3 gavetas**
+- **Fogão Consul 4 bocas**
+- **Criado-mudo 4 gavetas**
+- **Cômoda 4 gavetas e 1 porta**
+- **Teclado sem fio Logitech K400 Plus**
+
+Têm sinais de interesse, mas precisam de melhor posicionamento, reforço visual ou chamada comercial mais direta.
+
+# Produtos frios
+
+- **Teclado gamer HyperX Alloy MKW100**
+- **Rack clássico com vidro**
+
+Baixo volume relativo de interesse. Antes de desconto, vale testar melhor destaque, fotos e divulgação segmentada.
+
+# Recomendações por produto
+
+- Produto: **Mesa de jantar com 6 cadeiras**  
+  Diagnóstico: Produto mais acessado do catálogo, com 37 cliques em detalhes. Alto interesse, mas sem link Mercado Livre.  
+  Ação recomendada: Destacar como “mais procurado” e incluir chamada direta para WhatsApp/contato rápido.  
+  Justificativa: Muitos cliques em detalhes indicam interesse real. Como não há Mercado Livre, a conversão depende de um caminho simples para contato.
+
+- Produto: **Smart TV LG 49" UHD 4K**  
+  Diagnóstico: Produto muito forte, com 20 cliques em detalhes e 6 cliques no Mercado Livre.  
+  Ação recomendada: Manter preço por enquanto e reforçar urgência: “TV 4K disponível para retirada”.  
+  Justificativa: Os cliques no Mercado Livre indicam intenção mais forte. Ainda não há sinal para desconto; o foco deve ser conversão.
+
+- Produto: **Geladeira Electrolux inox**  
+  Diagnóstico: Alto interesse, com 32 cliques em detalhes. Produto de necessidade prática e alto valor percebido.  
+  Ação recomendada: Dar destaque na página inicial e facilitar contato direto para negociação/retirada.  
+  Justificativa: O volume de detalhes é alto. Antes de rever preço, vale melhorar o caminho de contato e reforçar fotos/estado de conservação.
+
+- Produto: **Cômoda 2,07m com gavetas e portas**  
+  Diagnóstico: Interesse relevante, com 20 cliques em detalhes, mas sem sinal adicional de intenção via Mercado Livre.  
+  Ação recomendada: Melhorar descrição com medidas, estado, capacidade interna e condições de retirada.  
+  Justificativa: Móvel grande exige segurança na decisão. Informações práticas podem reduzir dúvidas e aumentar contato.
+
+- Produto: **Guarda-roupa 3 portas e 3 gavetas**  
+  Diagnóstico: Interesse moderado, com 12 detalhes e 3 cliques no Mercado Livre.  
+  Ação recomendada: Reforçar o anúncio com medidas, fotos internas e informação sobre desmontagem/retirada.  
+  Justificativa: Cliques no Mercado Livre mostram intenção. Para móveis grandes, logística pode ser a principal barreira.
+
+- Produto: **Fogão Consul 4 bocas**  
+  Diagnóstico: Interesse moderado, com 11 detalhes e 2 cliques no Mercado Livre.  
+  Ação recomendada: Destacar funcionamento, estado das bocas/forno e se acompanha mangueira/regulador.  
+  Justificativa: Eletrodomésticos vendem melhor quando o comprador tem confiança no funcionamento.
+
+- Produto: **Criado-mudo 4 gavetas**  
+  Diagnóstico: Interesse moderado, com 12 detalhes e 1 clique no Mercado Livre.  
+  Ação recomendada: Testar divulgação em conjunto com outros móveis do dormitório.  
+  Justificativa: Pode ter maior apelo como complemento de quarto, especialmente se combinado visualmente com cômodas ou guarda-roupa.
+
+- Produto: **Cômoda 4 gavetas e 1 porta**  
+  Diagnóstico: Interesse menor, mas com 2 cliques no Mercado Livre, indicando alguma intenção.  
+  Ação recomendada: Melhorar posicionamento no catálogo e comparar apresentação com a outra cômoda mais acessada.  
+  Justificativa: A outra cômoda teve mais atenção. Pode haver diferença de foto, título, descrição ou percepção de valor.
+
+- Produto: **Teclado sem fio Logitech K400 Plus**  
+  Diagnóstico: Bom desempenho para item de baixo valor, com 6 detalhes e 2 cliques no Mercado Livre.  
+  Ação recomendada: Manter preço e destacar utilidade para Smart TV, home office e media center.  
+  Justificativa: A taxa de intenção é boa. Produto barato tende a converter com descrição objetiva e retirada fácil.
+
+- Produto: **Teclado gamer HyperX Alloy MKW100**  
+  Diagnóstico: Baixo interesse relativo, com 6 detalhes e 1 clique no Mercado Livre.  
+  Ação recomendada: Reposicionar o texto para público gamer, destacando modelo, switches, iluminação e estado.  
+  Justificativa: O produto depende de especificações claras. Antes de desconto, vale melhorar apelo técnico.
+
+- Produto: **Rack clássico com vidro**  
+  Diagnóstico: Produto mais frio entre os disponíveis, com 6 cliques em detalhes e sem link Mercado Livre.  
+  Ação recomendada: Melhorar fotos ambientadas e destacar medidas, estado do vidro e possibilidade de retirada.  
+  Justificativa: Móvel com vidro exige confiança visual e logística clara. O baixo interesse sugere problema de atratividade ou posicionamento, não necessariamente preço.
+
+# Ações prioritárias para hoje
+
+1. Colocar **Mesa de jantar**, **Smart TV** e **Geladeira** em destaque no topo do catálogo.  
+2. Adicionar ou reforçar botão de **contato direto/WhatsApp** nos produtos com muitos cliques em detalhes.  
+3. Divulgar prioritariamente em grupos e contatos de **São Paulo** e **Bragança Paulista**.  
+4. Usar chamada de urgência: “Disponível para retirada”, “produto mais acessado” ou “alta procura”.  
+5. Revisar fotos e descrições dos móveis grandes, incluindo medidas, estado e logística de retirada.  
+6. Não aplicar desconto amplo hoje; testar primeiro destaque e melhoria de conversão.
+
+# O que monitorar amanhã
+
+- Se os produtos quentes geraram mais contatos após o destaque.  
+- Evolução dos cliques no Mercado Livre da **TV**, **Guarda-roupa**, **Fogão** e teclados.  
+- Se a **Mesa** e a **Geladeira** continuam com muitos cliques em detalhes sem contato direto.  
+- Desempenho do popup de oportunidade, que já teve boa interação.  
+- Quais cidades continuam trazendo tráfego útil, especialmente São Paulo e Bragança Paulista.  
+- Produtos frios que permanecerem sem reação após melhoria de destaque; só então considerar desconto pontual e conservador.
