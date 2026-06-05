@@ -57,3 +57,6 @@ dados-agente/relatorios/*.txt
 
 # Logs futuros
 dados-agente/logs/*.log
+
+# erros e arquivos temporários
+dados-agente/erros/
