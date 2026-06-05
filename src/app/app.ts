@@ -642,7 +642,8 @@ export class App {
 
       gtag('event', nomeEvento, {
         origem: 'popup_inicial',
-        pagina: 'catalogo_ap'
+        pagina: 'catalogo_ap',
+        teste_popup: 'sim'
       });
     }
 
