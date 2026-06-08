@@ -60,3 +60,33 @@ dados-agente/logs/*.log
 
 # erros e arquivos temporários
 dados-agente/erros/
+
+# Saídas geradas pelo agente V3/V4/V5
+dados-agente/saida/
+
+# PDFs gerados localmente
+*.pdf
+
+dados-agente/entrada/*
+!dados-agente/entrada/.gitkeep
+
+dados-agente/historico/*
+!dados-agente/historico/.gitkeep
+
+dados-agente/relatorios/*
+!dados-agente/relatorios/.gitkeep
+
+dados-agente/saida/*
+!dados-agente/saida/.gitkeep
+
+dados-agente/logs/*
+!dados-agente/logs/.gitkeep
+
+# Saídas geradas pelo agente
+dados-agente/saida/*
+
+# Mantém apenas a estrutura da pasta
+!dados-agente/saida/.gitkeep
+
+# PDFs locais
+*.pdf
