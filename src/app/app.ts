@@ -91,6 +91,30 @@ type Produto = {
   styleUrl: './app.scss'
 })
 export class App {
+    // Bruno - 08/06/2026 - contagem regressiva para encerramento dos anúncios
+    dataEncerramento = new Date('2026-06-13T02:59:00Z').getTime();
+
+    tempoRestante = '';
+    anunciosEncerrados = false;
+
+    atualizarContagemRegressiva(): void {
+      const agora = new Date().getTime();
+      const diferenca = this.dataEncerramento - agora;
+
+      if (diferenca <= 0) {
+        this.tempoRestante = 'Anúncios encerrados';
+        this.anunciosEncerrados = true;
+        return;
+      }
+
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferenca / 1000) % 60);
+
+      this.tempoRestante = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+    }
+
   /**
    * Título exibido no cabeçalho azul do catálogo.
    * Signal é um recurso do Angular para guardar um valor reativo.
@@ -621,7 +645,17 @@ export class App {
     mostrarPopupOportunidade = true;
 
     ngOnInit(): void {
+
+      // Popup existente
       this.rastrearPopupOportunidade('popup_oportunidade_exibido');
+
+      // Contagem regressiva
+      this.atualizarContagemRegressiva();
+
+      setInterval(() => {
+        this.atualizarContagemRegressiva();
+      }, 1000);
+
     }
 
     fecharPopupOportunidade(): void {
