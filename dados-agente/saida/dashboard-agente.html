@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Agente de IA - Desapego</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 28px 24px;
+    }
+
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 0;
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    main {
+      padding: 24px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .resumo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .resumo-card {
+      background: white;
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .resumo-card small {
+      color: #6b7280;
+    }
+
+    .resumo-card strong {
+      display: block;
+      font-size: 26px;
+      margin-top: 6px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border-top: 6px solid #9ca3af;
+    }
+
+    .card.alta {
+      border-top-color: #16a34a;
+    }
+
+    .card.media {
+      border-top-color: #f59e0b;
+    }
+
+    .card.baixa {
+      border-top-color: #dc2626;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .comodo {
+      margin: 6px 0 0 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .score {
+      min-width: 70px;
+      text-align: center;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .score span {
+      display: block;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .score small,
+    .grid small,
+    .acao small,
+    .motivo small {
+      color: #6b7280;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .badge {
+      background: #e5e7eb;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .badge.alta {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .badge.media {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .badge.baixa {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .grid div {
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .grid strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 18px;
+    }
+
+    .acao,
+    .motivo {
+      margin-top: 14px;
+      background: #f9fafb;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .acao p,
+    .motivo p {
+      margin: 6px 0 0 0;
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      color: #6b7280;
+      padding: 24px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Dashboard do Agente de IA</h1>
+    <p>Analise V3, V4 e V5 baseada no arquivo: resultado-v3-v4-v5-2026-06-06T14-32-34.json</p>
+  </header>
+
+  <main>
+    <section class="resumo">
+      <div class="resumo-card">
+        <small>Produtos analisados</small>
+        <strong>11</strong>
+      </div>
+      <div class="resumo-card">
+        <small>Alta probabilidade</small>
+        <strong>3</strong>
+      </div>
+      <div class="resumo-card">
+        <small>Produtos crescendo</small>
+        <strong>1</strong>
+      </div>
+      <div class="resumo-card">
+        <small>Maior score</small>
+        <strong>87</strong>
+      </div>
+    </section>
+
+    <section class="cards">
+      
+    <article class="card alta">
+      <div class="card-header">
+        <div>
+          <h2>Mesa de jantar com 6 cadeiras</h2>
+          <p class="comodo">Sala · Disponível</p>
+        </div>
+        <div class="score">
+          <span>87</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge alta">Alta</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Manter preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 499,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 499,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>39</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>39</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Manter preço e reforçar divulgação</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Alta probabilidade de venda. Evite desconto agora para preservar margem.</p>
+      </div>
+    </article>
+  
+
+    <article class="card alta">
+      <div class="card-header">
+        <div>
+          <h2>Smart TV LG 49" UHD 4K</h2>
+          <p class="comodo">Sala · Disponível</p>
+        </div>
+        <div class="score">
+          <span>74</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge alta">Alta</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 1.099,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 1.044,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>32</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>32</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card alta">
+      <div class="card-header">
+        <div>
+          <h2>Geladeira Electrolux inox</h2>
+          <p class="comodo">Cozinha · Disponível</p>
+        </div>
+        <div class="score">
+          <span>75</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge alta">Alta</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Manter preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 1.590,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 1.590,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>32</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>33</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Manter preço e reforçar divulgação</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Alta probabilidade de venda. Evite desconto agora para preservar margem.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Cômoda 2,07m com gavetas e portas</h2>
+          <p class="comodo">Suíte · Disponível</p>
+        </div>
+        <div class="score">
+          <span>62</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 1.299,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 1.234,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>20</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>20</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Guarda-roupa 3 portas e 3 gavetas</h2>
+          <p class="comodo">Dormitório 2 · Disponível</p>
+        </div>
+        <div class="score">
+          <span>67</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Crescendo</span>
+        <span class="badge">Manter preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 1.699,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 1.699,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>18</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>20</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Manter preço</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>O interesse está crescendo. Melhor aguardar antes de conceder desconto.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Fogão Consul 4 bocas</h2>
+          <p class="comodo">Cozinha · Disponível</p>
+        </div>
+        <div class="score">
+          <span>60</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 799,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 759,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>15</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>16</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Criado-mudo 4 gavetas</h2>
+          <p class="comodo">Dormitório 2 · Disponível</p>
+        </div>
+        <div class="score">
+          <span>59</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 699,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 664,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>15</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>15</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Cômoda 4 gavetas e 1 porta</h2>
+          <p class="comodo">Dormitório 2 · Disponível</p>
+        </div>
+        <div class="score">
+          <span>52</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 1.299,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 1.234,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>11</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>11</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Teclado sem fio Logitech K400 Plus</h2>
+          <p class="comodo">Escritório · Disponível</p>
+        </div>
+        <div class="score">
+          <span>58</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 99,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 94,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>11</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>11</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Teclado gamer HyperX Alloy MKW100</h2>
+          <p class="comodo">Escritório · Disponível</p>
+        </div>
+        <div class="score">
+          <span>56</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 149,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 142,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>9</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>9</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+
+    <article class="card media">
+      <div class="card-header">
+        <div>
+          <h2>Rack clássico com vidro</h2>
+          <p class="comodo">Sala · Disponível</p>
+        </div>
+        <div class="score">
+          <span>47</span>
+          <small>score</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge media">Média</span>
+        <span class="badge">Estável</span>
+        <span class="badge">Baixar preço</span>
+      </div>
+
+      <div class="grid">
+        <div>
+          <small>Preço atual</small>
+          <strong>R$ 1.199,00</strong>
+        </div>
+        <div>
+          <small>Preço sugerido</small>
+          <strong>R$ 1.139,00</strong>
+        </div>
+        <div>
+          <small>Cliques anteriores</small>
+          <strong>6</strong>
+        </div>
+        <div>
+          <small>Cliques atuais</small>
+          <strong>6</strong>
+        </div>
+      </div>
+
+      <div class="acao">
+        <small>Ação recomendada</small>
+        <p>Melhorar anúncio e testar pequeno desconto</p>
+      </div>
+
+      <div class="motivo">
+        <small>Motivo</small>
+        <p>Interesse médio. Um ajuste leve pode acelerar a conversão.</p>
+      </div>
+    </article>
+  
+    </section>
+  </main>
+
+  <footer>
+    Gerado automaticamente pelo Agente de IA - Anuncios de Eletrodomesticos
+  </footer>
+</body>
+</html>
+  
