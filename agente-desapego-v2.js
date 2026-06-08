@@ -314,7 +314,9 @@ function montarAnaliseBase() {
 
     const cliquesDetalhes = detalhes[chave] || 0;
     const cliquesMercadoLivre = mercadoLivre[chave] || 0;
-
+/**
+ * Mercado livre tem peso dois nos cliques
+ */
     const score = cliquesDetalhes + cliquesMercadoLivre * 2;
 
     return {

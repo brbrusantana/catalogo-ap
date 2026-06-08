@@ -184,7 +184,7 @@ export class App {
       comodo: 'Suíte',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.299,00',
+      valorVenda: 'R$ 1.179,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
       status: 'Disponível',
@@ -207,7 +207,7 @@ export class App {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 699,00',
+      valorVenda: 'R$ 599,00',
       status: 'Disponível',
       imagem: 'assets/005-criado-mudo.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837236296'
@@ -218,7 +218,7 @@ export class App {
       comodo: 'Dormitório 2',
       categoriaComodo: 'Dormitório',
       valorOriginal: 'R$ 3.000,00',
-      valorVenda: 'R$ 1.699,00',
+      valorVenda: 'R$ 1.499,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
       status: 'Disponível',
@@ -301,7 +301,7 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 2.000,00',
-      valorVenda: 'R$ 1.199,00',
+      valorVenda: 'R$ 999,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
       status: 'Disponível',
@@ -338,7 +338,7 @@ export class App {
       comodo: 'Sala',
       categoriaComodo: 'Sala',
       valorOriginal: 'R$ 1.850,00',
-      valorVenda: 'R$ 1.099,00',
+      valorVenda: 'R$ 999,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
       status: 'Disponível',
@@ -378,7 +378,7 @@ export class App {
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 2.200,00',
-      valorVenda: 'R$ 1.590,00',
+      valorVenda: 'R$ 1.390,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
       status: 'Disponível',
