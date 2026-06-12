@@ -271,7 +271,7 @@ export class App {
       valorVenda: 'R$ 899,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Reservado',
+      status: 'Vendido',
       imagem: 'assets/008-bicama-ortobom.png'
     },
     {
@@ -280,10 +280,10 @@ export class App {
       comodo: 'Escritório',
       categoriaComodo: 'Escritório',
       valorOriginal: 'R$ 1.500,00',
-      valorVenda: 'R$ 799,00',
+      valorVenda: 'R$ 399,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Reservado',
+      status: 'Vendido',
       imagem: 'assets/009-cadeira-gamer-vermelha.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6836863246'
     },
@@ -293,7 +293,7 @@ export class App {
       comodo: 'Escritório',
       categoriaComodo: 'Escritório',
       valorOriginal: 'R$ 1.500,00',
-      valorVenda: 'R$ 899,00',
+      valorVenda: 'R$ 399,00',
       status: 'Vendido',
       imagem: 'assets/010-cadeira-gamer-verde.png'
     },
@@ -340,7 +340,7 @@ export class App {
       valorVenda: 'R$ 799,99',
       // Bruno - 31/5/26 - indicador de novo desconto.
       //novoDesconto: true,
-      status: 'Reservado',
+      status: 'Disponível',
       imagem: 'assets/014-sofa-cama-laila.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6837463500'
     },
@@ -378,7 +378,7 @@ export class App {
       valorVenda: 'R$ 799,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Reservado',
       imagem: 'assets/017-fogao-consul-4-bocas.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-4709019557'
     },
@@ -387,8 +387,8 @@ export class App {
       nome: 'Micro-ondas Electrolux inox',
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
-      valorOriginal: 'R$ 1.200,00',
-      valorVenda: 'R$ 749,00',
+      valorOriginal: 'R$ 749,00',
+      valorVenda: 'R$ 399,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
       // Bruno - 31/5/26 - vendido.
@@ -405,7 +405,7 @@ export class App {
       valorVenda: 'R$ 1.390,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Reservado',
       imagem: 'assets/019-geladeira-electrolux.png'
     },
     {

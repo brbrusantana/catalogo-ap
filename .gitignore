@@ -89,4 +89,6 @@ dados-agente/saida/*
 !dados-agente/saida/.gitkeep
 
 # PDFs locais
-*.pdf
+*.pdfgit rm -r --cached dados-agente/saida
+
+git rm --cached "dashboard de produtos disponíveis.pdf"
