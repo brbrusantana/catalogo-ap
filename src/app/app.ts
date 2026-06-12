@@ -371,7 +371,7 @@ export class App {
     },
     {
       id: 17,
-      nome: 'Fogão Consul 4 bocas',
+      nome: 'TOOOOP: Fogão Consul 4 bocas',
       comodo: 'Cozinha',
       categoriaComodo: 'Cozinha',
       valorOriginal: 'R$ 1.200,00',
