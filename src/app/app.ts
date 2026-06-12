@@ -245,7 +245,7 @@ export class App {
       valorVenda: 'R$ 1.499,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Reservado',
       imagem: 'assets/006-guarda-roupa-solteiro.png',
       linkMercadoLivre: 'https://produto.mercadolivre.com.br/MLB-6867722404'
     },
