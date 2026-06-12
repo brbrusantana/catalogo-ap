@@ -211,7 +211,7 @@ export class App {
       valorVenda: 'R$ 1.179,00',
       // Bruno - 31/5/26 - indicador de novo desconto.
       novoDesconto: true,
-      status: 'Disponível',
+      status: 'Reservado',
       imagem: 'assets/003-comoda-207cm.png'
     },
     {
