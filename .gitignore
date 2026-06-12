@@ -92,3 +92,6 @@ dados-agente/saida/*
 *.pdfgit rm -r --cached dados-agente/saida
 
 git rm --cached "dashboard de produtos disponíveis.pdf"
+
+# 12/06/2026 minha cola de deploy no git e GH pages
+COLA_DEPLOY_LOCAL.md
